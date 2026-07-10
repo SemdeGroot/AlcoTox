@@ -49,6 +49,8 @@ type EthanolStrengthMode = "96" | "98" | "custom";
 const DEFAULT_TARGET_INFUSION_PCT = "10";
 const DEFAULT_BAG_VOLUME_ML = "500";
 const DEFAULT_CUSTOM_STRENGTH_PCT = "96";
+const MAX_ADD_VOLUME_BASIS =
+  "Gebaseerd op Free Flex-zakken van Fresenius.";
 
 export function CalculatorScreen() {
   const [weightKg, setWeightKg] = React.useState("70");
@@ -701,13 +703,13 @@ function InfusionPreparationCard({
               <InlineNotice
                 icon={Info}
                 tone="warning"
-                text={`Voor exact ${formatMgPerMl(preparation.targetConcentrationMgPerMl)} is ${formatMlOneDecimal(preparation.requiredEthanolToAddMl)} nodig. De zak laat maximaal ${formatMlOneDecimal(preparation.maximumAddVolumeMl)} toe. EthaDose rekent verder met de werkelijke concentratie van ${formatMgPerMl(preparation.actualConcentrationMgPerMl)}.`}
+                text={`Voor exact ${formatMgPerMl(preparation.targetConcentrationMgPerMl)} is ${formatMl(preparation.requiredEthanolToAddMl)} nodig. De zak laat maximaal ${formatMl(preparation.maximumAddVolumeMl)} toe. EthaDose rekent verder met de werkelijke concentratie van ${formatMgPerMl(preparation.actualConcentrationMgPerMl)}.`}
               />
             ) : null}
             <ResultRow
               title={`Bijspuiten ethanol ${strengthPctLabel}`}
-              primary={formatMlOneDecimal(preparation.ethanolToAddMl)}
-              secondary={`Eindvolume ${formatMlOneDecimal(preparation.finalVolumeMl)}, werkelijke concentratie ${formatMgPerMl(preparation.actualConcentrationMgPerMl)}. Maximaal bijspuitvolume ${formatMlOneDecimal(preparation.maximumAddVolumeMl)}.`}
+              primary={formatMl(preparation.ethanolToAddMl)}
+              secondary={`Eindvolume ${formatMlOneDecimal(preparation.finalVolumeMl)}, werkelijke concentratie ${formatMgPerMl(preparation.actualConcentrationMgPerMl)}. Maximaal bijspuitvolume ${formatMl(preparation.maximumAddVolumeMl)}. ${MAX_ADD_VOLUME_BASIS}`}
               emphasized
             />
           </div>

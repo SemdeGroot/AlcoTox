@@ -6,6 +6,9 @@
 export const REFERENCE =
   "Touw DJ, Beus WP, Vinks AATMM, van Dijk A. Intoxicatie met methanol en ethyleenglycol: klinische toxicologie en berekening van de optimale dosis ethanol als antidotum. Pharmaceutisch Weekblad. 1993, 128(11), 537-542.";
 
+export const MAX_ADD_VOLUME_BASIS =
+  "Het maximale bijspuitvolume is gebaseerd op Free Flex-zakken van Fresenius.";
+
 export type SourceSection = {
   title: string;
   paragraphs: string[];
@@ -37,7 +40,7 @@ export const SOURCE_SECTIONS: SourceSection[] = [
     paragraphs: [
       "De standaard streefconcentratie is 1000 mg/L. EthaDose schat met de tijd tussen bloedafname en start van de toediening welke ethanolconcentratie bij de start resteert. De oplaaddosis vult alleen het verschil tussen deze schatting en de gekozen streefwaarde aan.",
       "De onderhoudsdosering gebruikt gewicht, Vmax en Km. Bij chronisch alcoholgebruik geldt een hogere Vmax. Bij dialyse telt extra klaring mee. De infuusconcentratie bepaalt de omrekening van mg ethanol naar ml.",
-      "De sterkte van de ethanolvoorraad wordt ingevoerd als volumepercentage. EthaDose rekent dit met de dichtheid van zuivere ethanol om naar mg/ml. Als het benodigde bijspuitvolume niet in de gekozen zak past, gebruikt de app het maximale bijspuitvolume en rekent verder met de werkelijk verkregen concentratie.",
+      `De sterkte van de ethanolvoorraad wordt ingevoerd als volumepercentage. EthaDose rekent dit met de dichtheid van zuivere ethanol om naar mg/ml. Als het benodigde bijspuitvolume niet in de gekozen zak past, gebruikt de app het maximale bijspuitvolume en rekent verder met de werkelijk verkregen concentratie. ${MAX_ADD_VOLUME_BASIS}`,
     ],
   },
   {
@@ -69,7 +72,7 @@ export const FAQ: { question: string; answer: string }[] = [
   {
     question: "Hoe berekent EthaDose de concentratie van het ethanol-infuus?",
     answer:
-      "EthaDose rekent de sterkte in procent v/v met een dichtheid van 789 mg/ml om naar een massaconcentratie. De app houdt rekening met het toegevoegde volume en met het maximale bijspuitvolume van de gekozen infuuszak. Alle ml-uitkomsten gebruiken de werkelijk verkregen infuusconcentratie.",
+      `EthaDose rekent de sterkte in procent v/v met een dichtheid van 789 mg/ml om naar een massaconcentratie. De app houdt rekening met het toegevoegde volume en met het maximale bijspuitvolume van de gekozen infuuszak. ${MAX_ADD_VOLUME_BASIS} Alle ml-uitkomsten gebruiken de werkelijk verkregen infuusconcentratie.`,
   },
   {
     question: "Waarom is de streefconcentratie 1000 mg/L?",
